@@ -1,34 +1,78 @@
-# 🏢 TechNordeste — Análise de Comercial e Financeira
+# 🏢 TechNordeste — Análise Comercial e Financeira
 
 Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática ao longo de 18 meses de operação (**Jan/2025 a Jun/2026**).
 
 ---
 
-## 📌 Visão Geral
+## 📌 Visão Geral & Fonte dos Dados
 
 O projeto simula a rotina real de uma empresa B2B para responder a perguntas de negócio estratégicas sobre sazonalidade, desempenho do time comercial, saúde financeira e retenção de clientes.
+
+* **Fonte do Dataset:** Claude IA - dados fictícios sobre problemas reais e gargalos do modelo de empresa B2B.
+
+1. **Inadimplência e Fluxo de Caixa:** Quase 20% das vendas faturadas geraram atrasos no recebimento ou continuam pendentes em aberto.
+2. **Risco de Concentração (Curva ABC):** Apenas 5 clientes somam mais de R$ 1,87 milhão em faturamento, concentrando mais de 1/3 da receita da empresa.
+3. **Desigualdade Regional:** Sudeste e Nordeste sustentam o negócio, enquanto Centro-Oeste e Norte apresentam baixa participação (menos de 15% somados).
+
+---
+
+## 📊 Leitura Detalhada dos Gráficos
+
+### 🗺️ Evolução de Faturamento por Região
+![Evolução do Faturamento por Região](./Evolucao_Faturamento.png)
+* **Comportamento Sazonal:** Observa-se picos expressivos no Sudeste em meados do ano (Junho ultrapassa R$ 200 mil), enquanto a região Norte mantém traçado linear e próximo de zero na maior parte do período.
+* **Leitura Estratégica:** Aponta necessidade de rever ações comerciais nas regiões Centro-Oeste e Norte ou concentrar a malha logística onde a demanda já é consolidada.
+
+---
+
+### 📦 Taxa de Cancelamento e Devolução por Categoria
+![Taxa de Cancelamento e Devolução](./Taxa_Cancelamento.png)
+* **Volume Operacional:** Componentes, Periféricos e Acessórios dominam o volume de movimentações físicas (próximo de 400 vendas cada).
+* **Qualidade Operacional:** A taxa global de cancelamento permanece baixa (2,03%), demonstrando boa assertividade nos pedidos pré-faturamento.
+
+---
+
+### 💻 Vendas por Categoria
+![Vendas por Categoria](./Vendas_Categoria.png)
+* **Impacto do Mix:** A categoria de **Notebooks atinge R$ 1,68 milhão**, liderando isolada o faturamento, mesmo não sendo a mais vendida em quantidade de unidades. 
+* **Estratégia de Ticket Médio:** Produtos de alto valor agregado compensam a menor frequência de vendas em relação a itens como Acessórios (R$ 365 mil).
+
+---
+
+### 🎯 Alcance da Meta Percentual (Time Comercial)
+![Alcance da Meta Percentual](./Alcance_Menta.png)
+* **Mapeamento por Código de Cores:**
+  * 🔴 **Vermelho:** Vendedores com desempenho crítico (**mais de 15% abaixo da meta**), como Thiago Martins (~80,6%) e Larissa Ribeiro (~85%).
+  * 🟠 **Laranja:** Vendedores que ficaram levemente abaixo da meta (**até 15% de desvio**, como Camila Rocha e Diego Ferreira).
+  * 🔵 **Azul:** Vendedores que **atingiram ou superaram 100% da meta** (maioria da equipe).
+* **Leitura Estratégica:** Permite identificar gargalos específicos de performance individual ou recalibração regional de metas sem penalizar a equipe que performa acima.
+
+---
+
+### 💳 Saúde Financeira e Inadimplência
+![Saúde Financeira](./Saude_Financeira.png)
+* **Distribuição das Transações (Total: 1.868):**
+  * 🟩 **1.438 transações:** Pagas em dia.
+  * 🔴 **281 transações:** Pagas com atraso.
+  * 🔵 **65 transações:** Em aberto (% Pagamento em Aberto = 3,64%).
+* **Leitura de Caixa:** Embora a inadimplência total em aberto seja de 3,64%, o elevado volume de pagamentos em atraso reduz a previsibilidade do fluxo de caixa e exige alinhamento com a política de crédito para boletos.
+
+---
+
+### 🏆 5 Clientes Mais Lucrativos
+![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png)
+* **Curva de Concentração:** Prime Suprimentos (R$ 462,1k) e Top Suprimentos (R$ 446,9k) lideram a carteira.
+* **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 accounts causa impacto direto e imediato sobre o faturamento global.
 
 ---
 
 ## 📐 Regras de Negócio e Métricas
 
-A padronização das regras garante que a análise retrate com precisão a saúde do negócio:
-
 | Métrica / Regra | Definição Operacional |
 | :--- | :--- |
 | **Faturamento** | $\text{Quantidade} \times \text{Preço Unitário}$ considerando apenas pedidos `Faturado`. Exclui cancelados e devolvidos. |
 | **Ticket Médio** | $\text{Faturamento Total} \div \text{Quantidade de Vendas Faturadas}$. |
-| **Atingimento de Meta** | Faturamento mensal realizado pelo vendedor comparado estritamente à sua meta do mesmo mês, por porcentagem : (Vendas Totais [Faturado] / Meta de vendas). |
-| **Status Financeiro** | Vendas à vista/cartão são tratadas como `Pago em Dia`. Boletos (30/60 dias) variam entre `Pago em Dia`, `Pago com Atraso` e `Em Aberto`. |
+| **Atingimento de Meta** | Faturamento mensal realizado pelo vendedor comparado estritamente à sua meta do mesmo mês: $(\text{Vendas Totais Faturadas} \div \text{Meta de Vendas}) \times 100$. |
+| **Status Financeiro** | Vendas à vista/cartão tratadas como `Pago em Dia`. Boletos (30/60 dias) variam entre `Pago em Dia`, `Pago com Atraso` e `Em Aberto`. |
 | **Diferenciação de Eventos** | **Cancelamento:** Pedido não faturado.<br>**Devolução:** Produto retornado após faturamento.<br>**Churn:** Cliente sem compras no histórico após determinado período. |
 | **Período de Análise** | Dados acumulados de 18 meses corridos (Jan/2025 a Jun/2026). |
-
----
-
-## 💡 Principais Insights de Negócio
-
-* 🗺️ **Concentração Regional:** Sudeste (R$ 1,45 mi) e Nordeste (R$ 1,27 mi) concentram **60% do faturamento total**. Centro-Oeste e Norte somados representam menos de 15%.
-* 💻 **Mix vs. Volume:** A categoria de Notebooks lidera o faturamento (R$ 1,69 mi) devido ao ticket médio elevado, compensando o volume menor de vendas em relação a Acessórios.
-* 🎯 **Desempenho Comercial:** A maior parte do time opera entre **98% e 128%** de atingimento da meta, mas há dispersões para baixo (até 80,6%), indicando necessidade de reavaliação de carteiras ou revisão de metas locais.
-* ⚠️ **Fluxo de Caixa:** De 1.868 transações, **281 foram pagas com atraso e 65 seguem em aberto**. Quase 20% das vendas entram com atraso no caixa.
-* 🏆 **Risco de Concentração:** Os **5 maiores clientes representam R$ 1,87 milhão** (mais de 1/3 da receita total), exigindo planos dedicados de retenção.
