@@ -114,7 +114,7 @@ ORDER BY vendedor, mes_ano;
 Essa foi a consulta mais importante do projeto. Ela agrupa por **vendedor e mês ao mesmo tempo** — exatamente a regra que corrigimos no Excel e no Power BI depois do bug do "1.900% de atingimento" (comparar faturamento de vários meses contra a meta de um mês só). Rodar isso no SQL foi o jeito mais rápido de confirmar, linha por linha nas 215 combinações vendedor/mês, que a lógica estava certa antes de replicar a mesma regra no Power BI.
 
 ### 3. Visão Consolidada de Faturamento e Ticket Médio por Categoria
-![Visão Consolidada por Categoria](./prints/3__Visao_Consolidada.png)
+![Visão Consolidada por Categoria](./Visao_Consolidada.png)
 ```sql
 SELECT
     categoria,
