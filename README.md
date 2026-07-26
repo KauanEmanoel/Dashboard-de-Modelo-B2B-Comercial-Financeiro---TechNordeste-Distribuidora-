@@ -8,7 +8,7 @@ Simulação e análise de dados operacionais de uma distribuidora B2B de eletrô
 
 O projeto simula a rotina real de uma empresa B2B para responder a perguntas de negócio estratégicas sobre sazonalidade, desempenho do time comercial, saúde financeira e retenção de clientes.
 
-* **Fonte do Dataset:** Claude IA - dados fictícios sobre problemas reais e gargalos do modelo de empresa B2B.
+---
 
 1. **Inadimplência e Fluxo de Caixa:** Quase 20% das vendas faturadas geraram atrasos no recebimento ou continuam pendentes em aberto.
 2. **Risco de Concentração (Curva ABC):** Apenas 5 clientes somam mais de R$ 1,87 milhão em faturamento, concentrando mais de 1/3 da receita da empresa.
@@ -73,5 +73,8 @@ O projeto simula a rotina real de uma empresa B2B para responder a perguntas de 
 ![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png)
 * **Curva de Concentração:** Prime Suprimentos (R$ 462,1k) e Top Suprimentos (R$ 446,9k) lideram a carteira.
 * **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 clientes causa impacto direto e imediato sobre o faturamento global.
+
+* ---
+  * **Fonte do Dataset:** Claude IA - dados fictícios sobre problemas reais e gargalos do modelo de empresa B2B.
 
 
