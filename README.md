@@ -1,6 +1,6 @@
 # 🏢 TechNordeste — Análise Comercial e Financeira B2B
 
-Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática, ao longo de **18 meses de operação** (Jan/2025 a Jun/2026). O projeto foi construído em três frentes — Excel, SQL e Power BI — pra responder as mesmas perguntas de negócio por caminhos diferentes e comparar os resultados entre si.
+Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática, ao longo de **18 meses de operação** (Jan/2025 a Jun/2026). O projeto foi construído em três frentes — Excel, SQL e Claude IA - pra responder as mesmas perguntas de negócio por caminhos diferentes e comparar os resultados entre si.
 
 ---
 
@@ -16,13 +16,13 @@ O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto
 > **Fonte do dataset:** massa de dados fictícia, gerada com apoio de IA (Claude), desenhada para simular gargalos operacionais reais de uma distribuidora B2B — sazonalidade, vendedor abaixo da meta, cliente inadimplente, produto com devolução acima do normal.
 
 ---
-
 ## 🛠️ Ferramentas e Fluxo de Trabalho
 
 | Ferramenta | Papel no projeto |
 |---|---|
-| **Excel** | Modelagem da base, Tabela Dinâmica, fórmulas (`SOMASES`, `MÉDIASES`, `CONT.SES`) e primeiro dashboard |
-| **SQL (MySQL)** | Extração relacional, agregações por categoria/vendedor/mês, e validação cruzada dos números do Excel |
+| **SQL (MySQL)** | Estruturação relacional, consultas analíticas (`GROUP BY`, `CASE WHEN`), extração dos dados e validação de regras de negócio. |
+| **Excel** | Modelagem da base, Tabela Dinâmica, fórmulas (`SOMASES`, `MÉDIASES`, `CONT.SES`) e construção de visões operacionais. |
+| **Claude IA** | Geração e parametrização do dataset fictício B2B, apoio no refinamento das análises e validação lógica das métricas do projeto. |
 
 ---
 
