@@ -94,7 +94,7 @@ SELECT * FROM vendas;
 A mais simples das três: traz as 1.868 linhas cruas, do jeito que estão no banco. Serve como conferência de importação — mesma contagem de linhas e mesmas colunas do arquivo Excel original, incluindo o `id` auto-incremento e o `valor_total_venda` já calculado.
 
 ### 2. Análise Geral de Desempenho e Atingimento de Meta por Vendedor/Mês
-![Análise de Desempenho e Meta](./prints/2__Análise_Geral_de_Desempenho_e_Atingimento_de_Meta_por_VendedorMês.png)
+![Análise de Desempenho e Meta](./Análise_Geral.png)
 ```sql
 USE technordeste_bi;
 SELECT 
