@@ -87,7 +87,7 @@ Prime Suprimentos (R$ 462,1 mil) e Top Suprimentos (R$ 446,9 mil) lideram a cart
 O SQL entrou no projeto depois do Excel, com um objetivo bem prático: **conferir se os números batiam** rodando a mesma lógica de negócio num banco relacional, sem depender de Tabela Dinâmica.
 
 ### 1. Extração da Base de Dados
-![Extração da Base de Dados](./1__Extração_de_Dados.png)
+![Extração da Base de Dados](./Extracao_Dados.png)
 ```sql
 USE technordeste_bi;
 SELECT * FROM vendas;
