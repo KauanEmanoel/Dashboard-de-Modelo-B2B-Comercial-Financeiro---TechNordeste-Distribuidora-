@@ -18,7 +18,7 @@ A padronização das regras garante que a análise retrate com precisão a saúd
 | :--- | :--- |
 | **Faturamento** | $\text{Quantidade} \times \text{Preço Unitário}$ considerando apenas pedidos `Faturado`. Exclui cancelados e devolvidos. |
 | **Ticket Médio** | $\text{Faturamento Total} \div \text{Quantidade de Vendas Faturadas}$. |
-| **Atingimento de Meta** | Faturamento mensal realizado pelo vendedor comparado estritamente à sua meta do mesmo mês. |
+| **Atingimento de Meta** | Faturamento mensal realizado pelo vendedor comparado estritamente à sua meta do mesmo mês, por porcentagem : (Vendas Totais [Faturado] / Meta de vendas). |
 | **Status Financeiro** | Vendas à vista/cartão são tratadas como `Pago em Dia`. Boletos (30/60 dias) variam entre `Pago em Dia`, `Pago com Atraso` e `Em Aberto`. |
 | **Diferenciação de Eventos** | **Cancelamento:** Pedido não faturado.<br>**Devolução:** Produto retornado após faturamento.<br>**Churn:** Cliente sem compras no histórico após determinado período. |
 | **Período de Análise** | Dados acumulados de 18 meses corridos (Jan/2025 a Jun/2026). |
