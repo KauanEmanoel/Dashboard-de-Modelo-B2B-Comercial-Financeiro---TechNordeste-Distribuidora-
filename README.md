@@ -62,7 +62,7 @@ O projeto simula a rotina real de uma empresa B2B para responder a perguntas de 
 ### 🏆 5 Clientes Mais Lucrativos
 ![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png)
 * **Curva de Concentração:** Prime Suprimentos (R$ 462,1k) e Top Suprimentos (R$ 446,9k) lideram a carteira.
-* **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 accounts causa impacto direto e imediato sobre o faturamento global.
+* **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 clientes causa impacto direto e imediato sobre o faturamento global.
 
 ---
 
