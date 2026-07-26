@@ -94,7 +94,7 @@ SELECT * FROM vendas;
 A mais simples das três: traz as 1.868 linhas cruas, do jeito que estão no banco. Serve como conferência de importação — mesma contagem de linhas e mesmas colunas do arquivo Excel original, incluindo o `id` auto-incremento e o `valor_total_venda` já calculado.
 
 ### 2. Análise Geral de Desempenho e Atingimento de Meta por Vendedor/Mês
-![Análise de Desempenho e Meta](./Análise_Geral.png)
+![Análise de Desempenho e Meta](./Analise_Geral.png)
 ```sql
 USE technordeste_bi;
 SELECT 
@@ -114,7 +114,7 @@ ORDER BY vendedor, mes_ano;
 Essa foi a consulta mais importante do projeto. Ela agrupa por **vendedor e mês ao mesmo tempo** — exatamente a regra que corrigimos no Excel e no Power BI depois do bug do "1.900% de atingimento" (comparar faturamento de vários meses contra a meta de um mês só). Rodar isso no SQL foi o jeito mais rápido de confirmar, linha por linha nas 215 combinações vendedor/mês, que a lógica estava certa antes de replicar a mesma regra no Power BI.
 
 ### 3. Visão Consolidada de Faturamento e Ticket Médio por Categoria
-![Visão Consolidada por Categoria](./prints/3__Visão_Consolidada_de_Faturamento_e_Ticket_Médio_por_Categoria.png)
+![Visão Consolidada por Categoria](./prints/3__Visao_Consolidada.png)
 ```sql
 SELECT
     categoria,
