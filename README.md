@@ -1,81 +1,169 @@
-# 🏢 TechNordeste — Análise Comercial e Financeira
+# 🏢 TechNordeste — Análise Comercial e Financeira B2B
 
-Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática ao longo de 18 meses de operação (**Jan/2025 a Jun/2026**).
+Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática, ao longo de **18 meses de operação** (Jan/2025 a Jun/2026). O projeto foi construído em três frentes — Excel, SQL e Power BI — pra responder as mesmas perguntas de negócio por caminhos diferentes e comparar os resultados entre si.
 
-## 📌 Visão Geral 
+---
 
-O projeto simula a rotina real de uma empresa B2B para responder a perguntas de negócio estratégicas sobre sazonalidade, desempenho do time comercial, saúde financeira e retenção de clientes.
+## 📌 Visão Geral
+
+O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto em decisão, olhando para quatro pilares:
+
+* **Sazonalidade e comportamento regional** — onde e quando a empresa vende mais
+* **Performance do time comercial** — quem bate meta e quem precisa de atenção
+* **Saúde financeira** — pontualidade de pagamento e inadimplência
+* **Concentração de clientes** — quais contas sustentam o faturamento
+
+> **Fonte do dataset:** massa de dados fictícia, gerada com apoio de IA (Claude), desenhada para simular gargalos operacionais reais de uma distribuidora B2B — sazonalidade, vendedor abaixo da meta, cliente inadimplente, produto com devolução acima do normal.
+
+---
+
+## 🛠️ Ferramentas e Fluxo de Trabalho
+
+| Ferramenta | Papel no projeto |
+|---|---|
+| **Excel** | Modelagem da base, Tabela Dinâmica, fórmulas (`SOMASES`, `MÉDIASES`, `CONT.SES`) e primeiro dashboard |
+| **SQL (MySQL)** | Extração relacional, agregações por categoria/vendedor/mês, e validação cruzada dos números do Excel |
+| **Power BI** | Modelo com Tabela Calendário, medidas DAX (`CALCULATE`, `SUMMARIZE`, `RANKX`) e dashboard interativo |
+
+---
 
 ## 💡 5 Principais Insights de Negócio
 
-1. **Ticket Alto Sustenta a Receita:** A categoria de Notebooks gera o maior faturamento (R$ 1,68 mi) mesmo vendendo poucas unidades. Produtos caros compensam o baixo volume de vendas.
-2. **Metas Descalibradas na Equipe:** A maioria dos vendedores bate a meta, mas alguns operam muito abaixo (até 80,6%). Isso aponta para carteiras de clientes mal divididas ou metas irreais para certas regiões.
-3. **Atrasos Apertam o Caixa:** Embora só 3,64% dos pagamentos estejam totalmente perdidos/em aberto, quase 20% das vendas atrasam para entrar. A política de cobrança de boletos precisa de revisão.
-4. **Operação Eficiente de Pedidos:** A taxa de cancelamento antes do faturamento é de apenas 2,03%. Quase tudo que o time comercial vende realmente vira pedido faturado.
-5. **Risco Crítico nos Top Clients:** Apenas 5 clientes somam R$ 1,87 mi (mais de 1/3 das vendas). Se a empresa perder 1 desses clientes (ex: Prime Suprimentos), perde cerca de 10% de todo o seu faturamento.
+1. **Ticket alto sustenta a receita** — Notebooks lidera o faturamento (R$ 1,68 mi) mesmo vendendo poucas unidades (333, contra 2.207 de Periféricos). Produto caro compensa baixo volume.
+2. **Metas descalibradas na equipe** — a maioria bate meta, mas dois vendedores operam bem abaixo (Thiago Martins ~80,6%, Larissa Ribeiro ~85%). Aponta pra carteira de cliente mal dividida ou meta irreal pra região.
+3. **Atrasos apertam o caixa** — só 3,64% dos pagamentos ficam totalmente em aberto, mas 281 das 1.868 vendas (quase 20% do faturado) chegam atrasadas. A política de cobrança de boletos merece revisão.
+4. **Operação de pedidos é eficiente** — taxa de cancelamento pré-faturamento é de apenas 2,03%. Quase tudo que o time vende realmente vira pedido faturado.
+5. **Risco concentrado nos top clientes** — 5 clientes somam R$ 1,87 mi (mais de 1/3 do faturamento total). Perder o Prime Suprimentos sozinho já custaria ~10% de todo o faturamento da empresa.
 
 ---
+
 ## 📐 Regras de Negócio e Métricas
 
 | Métrica / Regra | Definição Operacional |
-| :--- | :--- |
-| **Faturamento** | $\text{Quantidade} \times \text{Preço Unitário}$ considerando apenas pedidos `Faturado`. Exclui cancelados e devolvidos. |
-| **Ticket Médio** | $\text{Faturamento Total} \div \text{Quantidade de Vendas Faturadas}$. |
-| **Atingimento de Meta** | Faturamento mensal realizado pelo vendedor comparado estritamente à sua meta do mesmo mês: $(\text{Vendas Totais Faturadas} \div \text{Meta de Vendas}) \times 100$. |
-| **Status Financeiro** | Vendas à vista/cartão tratadas como `Pago em Dia`. Boletos (30/60 dias) variam entre `Pago em Dia`, `Pago com Atraso` e `Em Aberto`. |
-| **Diferenciação de Eventos** | **Cancelamento:** Pedido não faturado.<br>**Devolução:** Produto retornado após faturamento.<br>**Churn:** Cliente sem compras no histórico após determinado período. |
-| **Período de Análise** | Dados acumulados de 18 meses corridos (Jan/2025 a Jun/2026). |
+|---|---|
+| **Faturamento** | `Quantidade × Preço Unitário`, somando apenas pedidos com `status = Faturado`. Cancelado e devolvido nunca entram. |
+| **Ticket Médio** | Faturamento Total ÷ número de vendas faturadas. |
+| **Atingimento de Meta** | Faturamento realizado pelo vendedor **no mesmo mês** comparado à meta **daquele mesmo mês** — nunca faturamento acumulado de vários meses contra a meta de um mês só. |
+| **Status Financeiro** | À vista e cartão = liquidação imediata → sempre `Pago em Dia`. Boleto (30/60 dias) varia entre `Pago em Dia`, `Pago com Atraso` e `Em Aberto`, conforme data de pagamento x vencimento. |
+| **Diferenciação de eventos** | **Cancelamento:** pedido que não chegou a faturar. **Devolução:** produto que voltou depois de faturado. **Churn:** cliente sem compras após determinado período — métrica diferente de cancelamento, não coberta neste dashboard. |
+| **Período de análise** | Dados acumulados de 18 meses corridos (Jan/2025–Jun/2026), sem anualização ou projeção. |
+
 ---
+
 ## 📊 Leitura Detalhada dos Gráficos
 
 ### 🗺️ Evolução de Faturamento por Região
-![Evolução do Faturamento por Região](./Evolucao_Faturamento.png)
-* **Comportamento Sazonal:** Observa-se picos expressivos no Sudeste em meados do ano (Junho ultrapassa R$ 200 mil), enquanto a região Norte mantém traçado linear e próximo de zero na maior parte do período.
-* **Leitura Estratégica:** Aponta necessidade de rever ações comerciais nas regiões Centro-Oeste e Norte ou concentrar a malha logística onde a demanda já é consolidada.
-
----
+![Evolução do Faturamento por Região](./prints/Evolução_Faturamento.png)
+Sudeste e Sul puxam os picos do meio do ano (Junho passa de R$ 200 mil no Sudeste), enquanto Centro-Oeste e Norte seguem praticamente lineares, perto de zero, o período inteiro. Sinaliza onde reforçar ação comercial ou concentrar logística onde a demanda já está consolidada.
 
 ### 📦 Taxa de Cancelamento e Devolução por Categoria
-![Taxa de Cancelamento e Devolução](./Taxa_Cancelamento.png)
-* **Volume Operacional:** Componentes, Periféricos e Acessórios dominam o volume de movimentações físicas (próximo de 400 vendas cada).
-* **Qualidade Operacional:** A taxa global de cancelamento permanece baixa (2,03%), demonstrando boa assertividade nos pedidos pré-faturamento.
-
----
+![Taxa de Cancelamento e Devolução](./prints/Taxa_Cancelamento.png)
+Componentes, Periféricos e Acessórios concentram o maior volume de pedidos (perto de 400 cada). Mesmo assim, a taxa geral de cancelamento fica em 2,03% — a operação de pré-venda é assertiva.
 
 ### 💻 Vendas por Categoria
-![Vendas por Categoria](./Vendas_Categoria.png)
-* **Impacto do Mix:** A categoria de **Notebooks atinge R$ 1,68 milhão**, liderando isolada o faturamento, mesmo não sendo a mais vendida em quantidade de unidades. 
-* **Estratégia de Ticket Médio:** Produtos de alto valor agregado compensam a menor frequência de vendas em relação a itens como Acessórios (R$ 365 mil).
-
----
+![Vendas por Categoria](./prints/Vendas_Categoria.png)
+Notebooks atinge R$ 1,68 milhão isolado na liderança, mesmo sem ser a categoria mais vendida em unidades — o valor agregado do produto compensa o volume menor frente a Acessórios (R$ 365 mil).
 
 ### 🎯 Alcance da Meta Percentual (Time Comercial)
-![Alcance da Meta Percentual](./Alcance_Menta.png)
-* **Mapeamento por Código de Cores:**
-  * 🔴 **Vermelho:** Vendedores com desempenho crítico (**mais de 15% abaixo da meta**), como Thiago Martins (~80,6%) e Larissa Ribeiro (~85%).
-  * 🟠 **Laranja:** Vendedores que ficaram levemente abaixo da meta (**até 15% de desvio**, como Camila Rocha e Diego Ferreira).
-  * 🔵 **Azul:** Vendedores que **atingiram ou superaram 100% da meta** (maioria da equipe).
-* **Leitura Estratégica:** Permite identificar gargalos específicos de performance individual ou recalibração regional de metas sem penalizar a equipe que performa acima.
+![Alcance da Meta Percentual](./prints/Alcance_Menta.png)
+* 🔴 **Vermelho** — desempenho crítico, mais de 15% abaixo da meta: Thiago Martins (~80,6%) e Larissa Ribeiro (~85%)
+* 🟠 **Laranja** — levemente abaixo da meta (até 15% de desvio): Camila Rocha e Diego Ferreira
+* 🔵 **Azul** — atingiu ou superou 100%: maioria do time
 
----
+Permite mirar o gargalo em performance individual sem penalizar quem está entregando acima.
 
 ### 💳 Saúde Financeira e Inadimplência
-![Saúde Financeira](./Saude_Financeira.png)
-* **Distribuição das Transações (Total: 1.868):**
-  * 🟩 **1.438 transações:** Pagas em dia.
-  * 🔴 **281 transações:** Pagas com atraso.
-  * 🔵 **65 transações:** Em aberto (% Pagamento em Aberto = 3,64%).
-* **Leitura de Caixa:** Embora a inadimplência total em aberto seja de 3,64%, o elevado volume de pagamentos em atraso reduz a previsibilidade do fluxo de caixa e exige alinhamento com a política de crédito para boletos.
+![Saúde Financeira](./prints/Saude_Financeira.png)
+Das 1.868 transações: 1.438 pagas em dia, 281 pagas com atraso, 65 em aberto (3,64%). A inadimplência grave é baixa, mas o volume de atraso reduz a previsibilidade do caixa mês a mês.
+
+### 🏆 5 Clientes Mais Lucrativos
+![Top 5 Clientes Mais Lucrativos](./prints/Clientes_Lucrativos.png)
+Prime Suprimentos (R$ 462,1 mil) e Top Suprimentos (R$ 446,9 mil) lideram a carteira. Perder qualquer um dos 5 impacta o faturamento global de forma direta e imediata — justifica um atendimento dedicado pra essas contas.
 
 ---
 
-### 🏆 5 Clientes Mais Lucrativos
-![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png)
-* **Curva de Concentração:** Prime Suprimentos (R$ 462,1k) e Top Suprimentos (R$ 446,9k) lideram a carteira.
-* **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 clientes causa impacto direto e imediato sobre o faturamento global.
+## 🗄️ Consultas SQL (validação cruzada com o Excel)
 
-* ---
-* ## Fonte dos Dados
-  * **Fonte do Dataset:** Claude IA - dados fictícios sobre problemas reais e gargalos do modelo de empresa B2B.
+O SQL entrou no projeto depois do Excel, com um objetivo bem prático: **conferir se os números batiam** rodando a mesma lógica de negócio num banco relacional, sem depender de Tabela Dinâmica.
 
+### 1. Extração da Base de Dados
+![Extração da Base de Dados](./prints/1__Extração_de_Dados.png)
+```sql
+USE technordeste_bi;
+SELECT * FROM vendas;
+```
+A mais simples das três: traz as 1.868 linhas cruas, do jeito que estão no banco. Serve como conferência de importação — mesma contagem de linhas e mesmas colunas do arquivo Excel original, incluindo o `id` auto-incremento e o `valor_total_venda` já calculado.
 
+### 2. Análise Geral de Desempenho e Atingimento de Meta por Vendedor/Mês
+![Análise de Desempenho e Meta](./prints/2__Análise_Geral_de_Desempenho_e_Atingimento_de_Meta_por_VendedorMês.png)
+```sql
+USE technordeste_bi;
+SELECT 
+    vendedor,
+    DATE_FORMAT(data, '%Y-%m') AS mes_ano,
+    meta_mensal_vendedor AS meta_do_mes,
+    SUM(CASE WHEN status = 'Faturado' THEN valor_total_venda ELSE 0 END) AS faturamento_realizado,
+    COUNT(CASE WHEN status = 'Faturado' THEN 1 END) AS total_vendas_faturadas,
+    ROUND(
+      (SUM(CASE WHEN status = 'Faturado' THEN valor_total_venda ELSE 0 END)
+       / NULLIF(meta_mensal_vendedor, 0)) * 100, 2
+    ) AS atingimento_meta_pct
+FROM vendas
+GROUP BY vendedor, mes_ano, meta_mensal_vendedor
+ORDER BY vendedor, mes_ano;
+```
+Essa foi a consulta mais importante do projeto. Ela agrupa por **vendedor e mês ao mesmo tempo** — exatamente a regra que corrigimos no Excel e no Power BI depois do bug do "1.900% de atingimento" (comparar faturamento de vários meses contra a meta de um mês só). Rodar isso no SQL foi o jeito mais rápido de confirmar, linha por linha nas 215 combinações vendedor/mês, que a lógica estava certa antes de replicar a mesma regra no Power BI.
+
+### 3. Visão Consolidada de Faturamento e Ticket Médio por Categoria
+![Visão Consolidada por Categoria](./prints/3__Visão_Consolidada_de_Faturamento_e_Ticket_Médio_por_Categoria.png)
+```sql
+SELECT
+    categoria,
+    SUM(quantidade) AS total_unidades_vendidas,
+    SUM(valor_total_venda) AS faturamento_total,
+    ROUND(SUM(valor_total_venda) / NULLIF(COUNT(id), 0), 2) AS ticket_medio
+FROM vendas
+WHERE status = 'Faturado'
+GROUP BY categoria
+ORDER BY faturamento_total DESC;
+```
+Essa trouxe um ângulo que não estava tão visível no dashboard do Excel: o **ticket médio por categoria**. Notebooks não lidera só em faturamento total — o ticket médio por venda é R$ 9.875,96, quase **9 vezes maior** que o de Periféricos (R$ 1.059,80). O SQL serviu aqui pra confirmar rápido, sem montar uma Tabela Dinâmica nova, que a categoria de maior faturamento também é, disparado, a de maior valor por pedido.
+
+**Por que vale ter as duas ferramentas lado a lado:** o Excel mostra rápido "o quê" (o gráfico, o KPI), mas o SQL obriga a escrever a regra de negócio de forma explícita no `GROUP BY` e no `CASE WHEN` — é onde erros de agregação (como o da meta) ficam mais fáceis de enxergar e mais difíceis de esconder atrás de um filtro de Tabela Dinâmica mal configurado.
+
+---
+
+## 🗂️ Estrutura do Repositório
+
+```
+├── dataset/
+│   ├── TechNordeste_Dataset_Simples.xlsx
+│   └── technordeste_vendas.sql
+├── excel/
+│   └── dashboard_excel.xlsx
+├── powerbi/
+│   └── dashboard_technordeste.pbix
+├── prints/
+│   ├── Evolução_Faturamento.png
+│   ├── Taxa_Cancelamento.png
+│   ├── Vendas_Categoria.png
+│   ├── Alcance_Menta.png
+│   ├── Saude_Financeira.png
+│   ├── Clientes_Lucrativos.png
+│   ├── 1__Extração_de_Dados.png
+│   ├── 2__Análise_Geral_de_Desempenho_e_Atingimento_de_Meta_por_VendedorMês.png
+│   └── 3__Visão_Consolidada_de_Faturamento_e_Ticket_Médio_por_Categoria.png
+└── README.md
+```
+
+## ▶️ Como Reproduzir
+
+1. Abra `TechNordeste_Dataset_Simples.xlsx` — base única, já formatada como Tabela do Excel.
+2. Pra testar no SQL: `mysql -u seu_usuario -p < technordeste_vendas.sql`
+3. Pra testar no Power BI: abra o `.pbix`, ou importe a mesma base e recrie as medidas documentadas acima.
+
+---
+
+## 📄 Fonte dos Dados
+
+Dataset 100% fictício, gerado com apoio de IA (Claude) para fins de portfólio e estudo — simula problemas operacionais reais de uma distribuidora B2B.
