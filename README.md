@@ -174,6 +174,3 @@ O fluxo do projeto foi desenhado para garantir **rastreabilidade total do dado**
                        │    & Tomada de Decisão  │
                        └─────────────────────────┘
 
-## 📄 Fonte dos Dados
-
-Dataset 100% fictício, gerado com apoio de IA (Claude) para fins de portfólio e estudo — simula problemas operacionais reais de uma distribuidora B2B.
