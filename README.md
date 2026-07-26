@@ -23,7 +23,6 @@ O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto
 |---|---|
 | **Excel** | Modelagem da base, Tabela Dinâmica, fórmulas (`SOMASES`, `MÉDIASES`, `CONT.SES`) e primeiro dashboard |
 | **SQL (MySQL)** | Extração relacional, agregações por categoria/vendedor/mês, e validação cruzada dos números do Excel |
-| **Power BI** | Modelo com Tabela Calendário, medidas DAX (`CALCULATE`, `SUMMARIZE`, `RANKX`) e dashboard interativo |
 
 ---
 
@@ -154,13 +153,8 @@ Essa trouxe um ângulo que não estava tão visível no dashboard do Excel: o **
 │   ├── 2__Análise_Geral_de_Desempenho_e_Atingimento_de_Meta_por_VendedorMês.png
 │   └── 3__Visão_Consolidada_de_Faturamento_e_Ticket_Médio_por_Categoria.png
 └── README.md
-```
+---
 
-## ▶️ Como Reproduzir
-
-1. Abra `TechNordeste_Dataset_Simples.xlsx` — base única, já formatada como Tabela do Excel.
-2. Pra testar no SQL: `mysql -u seu_usuario -p < technordeste_vendas.sql`
-3. Pra testar no Power BI: abra o `.pbix`, ou importe a mesma base e recrie as medidas documentadas acima.
 
 ---
 
