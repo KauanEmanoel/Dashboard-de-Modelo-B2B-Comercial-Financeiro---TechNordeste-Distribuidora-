@@ -1,4 +1,4 @@
-# 🏢 TechNordeste — Análise Operacional e de Negócio
+# 🏢 TechNordeste — Análise de Comercial e Financeira
 
 Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática ao longo de 18 meses de operação (**Jan/2025 a Jun/2026**).
 
