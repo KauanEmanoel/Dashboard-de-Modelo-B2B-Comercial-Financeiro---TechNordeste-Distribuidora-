@@ -53,6 +53,8 @@ O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto
 
 ### 🗺️ Evolução de Faturamento por Região
 ![Evolução do Faturamento por Região](./Evolução_Faturamento.png)
+
+
 Sudeste e Sul puxam os picos do meio do ano (Junho passa de R$ 200 mil no Sudeste), enquanto Centro-Oeste e Norte seguem praticamente lineares, perto de zero, o período inteiro. Sinaliza onde reforçar ação comercial ou concentrar logística onde a demanda já está consolidada.
 
 ### 📦 Taxa de Cancelamento e Devolução por Categoria
