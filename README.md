@@ -2,17 +2,18 @@
 
 Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática ao longo de 18 meses de operação (**Jan/2025 a Jun/2026**).
 
----
-
-## 📌 Visão Geral & Fonte dos Dados
+## 📌 Visão Geral 
 
 O projeto simula a rotina real de uma empresa B2B para responder a perguntas de negócio estratégicas sobre sazonalidade, desempenho do time comercial, saúde financeira e retenção de clientes.
-
 ---
 
-1. **Inadimplência e Fluxo de Caixa:** Quase 20% das vendas faturadas geraram atrasos no recebimento ou continuam pendentes em aberto.
-2. **Risco de Concentração (Curva ABC):** Apenas 5 clientes somam mais de R$ 1,87 milhão em faturamento, concentrando mais de 1/3 da receita da empresa.
-3. **Desigualdade Regional:** Sudeste e Nordeste sustentam o negócio, enquanto Centro-Oeste e Norte apresentam baixa participação (menos de 15% somados).
+## 💡 5 Principais Insights de Negócio
+
+1. **Ticket Alto Sustenta a Receita:** A categoria de Notebooks gera o maior faturamento (R$ 1,68 mi) mesmo vendendo poucas unidades. Produtos caros compensam o baixo volume de vendas.
+2. **Metas Descalibradas na Equipe:** A maioria dos vendedores bate a meta, mas alguns operam muito abaixo (até 80,6%). Isso aponta para carteiras de clientes mal divididas ou metas irreais para certas regiões.
+3. **Atrasos Apertam o Caixa:** Embora só 3,64% dos pagamentos estejam totalmente perdidos/em aberto, quase 20% das vendas atrasam para entrar. A política de cobrança de boletos precisa de revisão.
+4. **Operação Eficiente de Pedidos:** A taxa de cancelamento antes do faturamento é de apenas 2,03%. Quase tudo que o time comercial vende realmente vira pedido faturado.
+5. **Risco Crítico nos Top Clients:** Apenas 5 clientes somam R$ 1,87 mi (mais de 1/3 das vendas). Se a empresa perder 1 desses clientes (ex: Prime Suprimentos), perde cerca de 10% de todo o seu faturamento.
 
 ---
 ## 📐 Regras de Negócio e Métricas
@@ -75,6 +76,7 @@ O projeto simula a rotina real de uma empresa B2B para responder a perguntas de 
 * **Plano de Retenção:** Uma eventual perda de qualquer um desses 5 clientes causa impacto direto e imediato sobre o faturamento global.
 
 * ---
+* ## Fonte dos Dados
   * **Fonte do Dataset:** Claude IA - dados fictícios sobre problemas reais e gargalos do modelo de empresa B2B.
 
 
