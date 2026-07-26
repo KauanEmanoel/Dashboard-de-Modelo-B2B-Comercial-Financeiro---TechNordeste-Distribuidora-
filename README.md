@@ -134,34 +134,36 @@ Essa trouxe um ângulo que não estava tão visível no dashboard do Excel: o **
 
 ## 🏗️ Estrutura da Análise e Lógica de Dados
 
-O fluxo de dados do projeto garante rastreabilidade total, desde a geração da massa bruta até a geração de insights executivos:
+O fluxo do projeto foi desenhado para garantir **rastreabilidade total do dado** (*data lineage*), desde a ingestão da massa bruta até a geração de insights estratégicos para a tomada de decisão:
 
-                  ┌─────────────────────────────────┐
-                  │      1. CAMADA DE ORIGEM        │
-                  │   Massa de Dados Fictícia (IA)  │
-                  │    1.868 registros (CSV/XLSX)   │
-                  └────────────────┬────────────────┘
-                                   │
-         ┌─────────────────────────┴─────────────────────────┐
-         ▼                                                   ▼
-┌───────────────────────────────┐           ┌───────────────────────────────┐
-│     2A. PROCESSAMENTO EXCEL   │           │      2B. BANCO DE DADOS       │
-│ - Limpeza e Modelagem         │           │ - Schema Relacional (MySQL)   │
-│ - Tabela Dinâmica             │           │ - Carga da tabela `vendas`    │
-│ - Fórmulas de Negócio         │           │ - Script DDL/DML (.sql)       │
-└────────┬──────────────────────┘           └────────┬──────────────────────┘
-         │                                           │
-         │         ┌───────────────────────┐         │
-         └────────►│ 3. VALIDAÇÃO CRUZADA  │◄────────┘
-                   │ Excel Output vs. SQL  │
-                   └───────────┬───────────┘
-                               │ (Dados Auditados)
-                               ▼
-                   ┌───────────────────────┐
-                   │ 4. CAMADA DE NEGÓCIO  │
-                   │   Insights & Tomada   │
-                   │     de Decisão        │
-                   └───────────────────────┘
+```text
+                     ┌─────────────────────────────────┐
+                     │       1. CAMADA DE ORIGEM       │
+                     │   Massa de Dados Fictícia (IA)  │
+                     │    1.868 registros (CSV/XLSX)   │
+                     └────────────────┬────────────────┘
+                                      │
+         ┌────────────────────────────┴────────────────────────────┐
+         ▼                                                         ▼
+┌───────────────────────────────┐                         ┌───────────────────────────────┐
+│     2A. BANCO DE DADOS        │                         │   2B. PROCESSAMENTO EXCEL     │
+│ - Schema Relacional (MySQL)   │                         │ - Ingestão dos Dados           │
+│ - Carga da Tabela `vendas`    │                         │ - Limpeza e Modelagem         │
+│ - Consultas & Queries (.sql)  │                         │ - Agregações via Dinâmica     │
+└────────┬──────────────────────┘                         └────────┬──────────────────────┘
+         │                                                         │
+         │             ┌─────────────────────────┐                 │
+         └────────────►│  3. VALIDAÇÃO CRUZADA   │◄────────────────┘
+                       │ Output MySQL vs. Excel  │
+                       └────────────┬────────────┘
+                                    │
+                                    │ (Dados Auditados & Consistentes)
+                                    ▼
+                       ┌─────────────────────────┐
+                       │  4. CAMADA DE NEGÓCIO   │
+                       │   Insights Estratégicos │
+                       │    & Tomada de Decisão  │
+                       └─────────────────────────┘
 
 
 
