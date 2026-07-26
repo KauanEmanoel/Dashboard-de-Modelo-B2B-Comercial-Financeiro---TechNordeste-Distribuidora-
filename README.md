@@ -5,7 +5,6 @@ Simulação e análise de dados operacionais de uma distribuidora B2B de eletrô
 ## 📌 Visão Geral 
 
 O projeto simula a rotina real de uma empresa B2B para responder a perguntas de negócio estratégicas sobre sazonalidade, desempenho do time comercial, saúde financeira e retenção de clientes.
----
 
 ## 💡 5 Principais Insights de Negócio
 
