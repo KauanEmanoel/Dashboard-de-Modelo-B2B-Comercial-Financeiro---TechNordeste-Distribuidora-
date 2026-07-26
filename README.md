@@ -132,28 +132,37 @@ Essa trouxe um ângulo que não estava tão visível no dashboard do Excel: o **
 
 ---
 
-## 🗂️ Estrutura do Repositório
+## 🏗️ Estrutura da Análise e Lógica de Dados
 
-```
-├── dataset/
-│   ├── TechNordeste_Dataset_Simples.xlsx
-│   └── technordeste_vendas.sql
-├── excel/
-│   └── dashboard_excel.xlsx
-├── powerbi/
-│   └── dashboard_technordeste.pbix
-├── prints/
-│   ├── Evolução_Faturamento.png
-│   ├── Taxa_Cancelamento.png
-│   ├── Vendas_Categoria.png
-│   ├── Alcance_Menta.png
-│   ├── Saude_Financeira.png
-│   ├── Clientes_Lucrativos.png
-│   ├── 1__Extração_de_Dados.png
-│   ├── 2__Análise_Geral_de_Desempenho_e_Atingimento_de_Meta_por_VendedorMês.png
-│   └── 3__Visão_Consolidada_de_Faturamento_e_Ticket_Médio_por_Categoria.png
-└── README.md
----
+O fluxo de dados do projeto garante rastreabilidade total, desde a geração da massa bruta até a geração de insights executivos:
+
+                  ┌─────────────────────────────────┐
+                  │      1. CAMADA DE ORIGEM        │
+                  │   Massa de Dados Fictícia (IA)  │
+                  │    1.868 registros (CSV/XLSX)   │
+                  └────────────────┬────────────────┘
+                                   │
+         ┌─────────────────────────┴─────────────────────────┐
+         ▼                                                   ▼
+┌───────────────────────────────┐           ┌───────────────────────────────┐
+│     2A. PROCESSAMENTO EXCEL   │           │      2B. BANCO DE DADOS       │
+│ - Limpeza e Modelagem         │           │ - Schema Relacional (MySQL)   │
+│ - Tabela Dinâmica             │           │ - Carga da tabela `vendas`    │
+│ - Fórmulas de Negócio         │           │ - Script DDL/DML (.sql)       │
+└────────┬──────────────────────┘           └────────┬──────────────────────┘
+         │                                           │
+         │         ┌───────────────────────┐         │
+         └────────►│ 3. VALIDAÇÃO CRUZADA  │◄────────┘
+                   │ Excel Output vs. SQL  │
+                   └───────────┬───────────┘
+                               │ (Dados Auditados)
+                               ▼
+                   ┌───────────────────────┐
+                   │ 4. CAMADA DE NEGÓCIO  │
+                   │   Insights & Tomada   │
+                   │     de Decisão        │
+                   └───────────────────────┘
+
 
 
 ---
