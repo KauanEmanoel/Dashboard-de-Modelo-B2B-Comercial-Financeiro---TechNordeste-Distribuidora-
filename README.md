@@ -57,15 +57,18 @@ O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto
 Sudeste e Sul puxam os picos do meio do ano (Junho passa de R$ 200 mil no Sudeste), enquanto Centro-Oeste e Norte seguem praticamente lineares, perto de zero, o período inteiro. Sinaliza onde reforçar ação comercial ou concentrar logística onde a demanda já está consolidada.
 
 ### 📦 Taxa de Cancelamento e Devolução por Categoria
-![Taxa de Cancelamento e Devolução](./Taxa_Cancelamento.png)
+![Taxa de Cancelamento e Devolução](./Taxa_Cancelamento.png).
+
 Componentes, Periféricos e Acessórios concentram o maior volume de pedidos (perto de 400 cada). Mesmo assim, a taxa geral de cancelamento fica em 2,03% — a operação de pré-venda é assertiva.
 
 ### 💻 Vendas por Categoria
-![Vendas por Categoria](./Vendas_Categoria.png)
+![Vendas por Categoria](./Vendas_Categoria.png).
+
 Notebooks atinge R$ 1,68 milhão isolado na liderança, mesmo sem ser a categoria mais vendida em unidades — o valor agregado do produto compensa o volume menor frente a Acessórios (R$ 365 mil).
 
 ### 🎯 Alcance da Meta Percentual (Time Comercial)
-![Alcance da Meta Percentual](./Alcance_Menta.png)
+![Alcance da Meta Percentual](./Alcance_Menta.png).
+
 * 🔴 **Vermelho** — desempenho crítico, mais de 15% abaixo da meta: Thiago Martins (~80,6%) e Larissa Ribeiro (~85%)
 * 🟠 **Laranja** — levemente abaixo da meta (até 15% de desvio): Camila Rocha e Diego Ferreira
 * 🔵 **Azul** — atingiu ou superou 100%: maioria do time
@@ -73,11 +76,13 @@ Notebooks atinge R$ 1,68 milhão isolado na liderança, mesmo sem ser a categori
 Permite mirar o gargalo em performance individual sem penalizar quem está entregando acima.
 
 ### 💳 Saúde Financeira e Inadimplência
-![Saúde Financeira](./Saude_Financeira.png)
+![Saúde Financeira](./Saude_Financeira.png).
+
 Das 1.868 transações: 1.438 pagas em dia, 281 pagas com atraso, 65 em aberto (3,64%). A inadimplência grave é baixa, mas o volume de atraso reduz a previsibilidade do caixa mês a mês.
 
 ### 🏆 5 Clientes Mais Lucrativos
-![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png)
+![Top 5 Clientes Mais Lucrativos](./Clientes_Lucrativos.png).
+
 Prime Suprimentos (R$ 462,1 mil) e Top Suprimentos (R$ 446,9 mil) lideram a carteira. Perder qualquer um dos 5 impacta o faturamento global de forma direta e imediata — justifica um atendimento dedicado pra essas contas.
 
 ---
@@ -87,7 +92,8 @@ Prime Suprimentos (R$ 462,1 mil) e Top Suprimentos (R$ 446,9 mil) lideram a cart
 O SQL entrou no projeto depois do Excel, com um objetivo bem prático: **conferir se os números batiam** rodando a mesma lógica de negócio num banco relacional, sem depender de Tabela Dinâmica.
 
 ### 1. Extração da Base de Dados
-![Extração da Base de Dados](./Extracao_Dados.png)
+![Extração da Base de Dados](./Extracao_Dados.png).
+
 ```sql
 USE technordeste_bi;
 SELECT * FROM vendas;
@@ -95,7 +101,8 @@ SELECT * FROM vendas;
 A mais simples das três: traz as 1.868 linhas cruas, do jeito que estão no banco. Serve como conferência de importação — mesma contagem de linhas e mesmas colunas do arquivo Excel original, incluindo o `id` auto-incremento e o `valor_total_venda` já calculado.
 
 ### 2. Análise Geral de Desempenho e Atingimento de Meta por Vendedor/Mês
-![Análise de Desempenho e Meta](./Analise_Geral.png)
+![Análise de Desempenho e Meta](./Analise_Geral.png).
+
 ```sql
 USE technordeste_bi;
 SELECT 
@@ -115,7 +122,8 @@ ORDER BY vendedor, mes_ano;
 Essa foi a consulta mais importante do projeto. Ela agrupa por **vendedor e mês ao mesmo tempo** — exatamente a regra que corrigimos no Excel e no Power BI depois do bug do "1.900% de atingimento" (comparar faturamento de vários meses contra a meta de um mês só). Rodar isso no SQL foi o jeito mais rápido de confirmar, linha por linha nas 215 combinações vendedor/mês, que a lógica estava certa antes de replicar a mesma regra no Power BI.
 
 ### 3. Visão Consolidada de Faturamento e Ticket Médio por Categoria
-![Visão Consolidada por Categoria](./Visao_Consolidada.png)
+![Visão Consolidada por Categoria](./Visao_Consolidada.png).
+
 ```sql
 SELECT
     categoria,
