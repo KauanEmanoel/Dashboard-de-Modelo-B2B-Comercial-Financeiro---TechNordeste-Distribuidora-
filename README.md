@@ -67,9 +67,9 @@ Componentes, Periféricos e Acessórios concentram o maior volume de pedidos (pe
 Notebooks atinge R$ 1,68 milhão isolado na liderança, mesmo sem ser a categoria mais vendida em unidades — o valor agregado do produto compensa o volume menor frente a Acessórios (R$ 365 mil).
 
 ### 🎯 Alcance da Meta Percentual (Time Comercial)
-![Alcance da Meta Percentual](./Alcance_Menta.png).
+![Alcance da Meta Percentual](./Alcance_Meta.png).
 
-* 🔴 **Vermelho** — desempenho crítico, mais de 15% abaixo da meta: Thiago Martins (~80,6%) e Larissa Ribeiro (~85%)
+* 🔴 **Vermelho** — desempenho crítico, mais de 15% abaixo da meta: Thiago Martins (~80,6%) e Larissa Ribeiro (~84,9%)
 * 🟠 **Laranja** — levemente abaixo da meta (até 10% de desvio): Camila Rocha e Diego Ferreira
 * 🔵 **Azul** — atingiu ou superou 100%: maioria do time
 
