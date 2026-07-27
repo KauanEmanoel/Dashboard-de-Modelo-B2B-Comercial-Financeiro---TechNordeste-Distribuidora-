@@ -1,6 +1,6 @@
 # 🏢 TechNordeste — Análise Comercial e Financeira B2B
 
-Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática, ao longo de **18 meses de operação** (Jan/2025 a Jun/2026). O projeto foi construído em três frentes — Excel, SQL e Claude IA - pra responder as mesmas perguntas de negócio por caminhos diferentes e comparar os resultados entre si.
+Simulação e análise de dados operacionais de uma distribuidora B2B de eletrônicos e informática, ao longo de **18 meses de operação** (Jan/2025 a Jun/2026). O projeto foi construído em três frentes: (Excel, SQL e Claude IA_ - pra responder as mesmas perguntas de negócio por caminhos diferentes e comparar os resultados entre si.
 
 ---
 
@@ -8,12 +8,12 @@ Simulação e análise de dados operacionais de uma distribuidora B2B de eletrô
 
 O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto em decisão, olhando para quatro pilares:
 
-* **Sazonalidade e comportamento regional** — onde e quando a empresa vende mais
-* **Performance do time comercial** — quem bate meta e quem precisa de atenção
-* **Saúde financeira** — pontualidade de pagamento e inadimplência
-* **Concentração de clientes** — quais contas sustentam o faturamento
+* **Sazonalidade e comportamento regional** - onde e quando a empresa vende mais
+* **Performance do time comercial** - quem bate meta e quem precisa de atenção
+* **Saúde financeira** - pontualidade de pagamento e inadimplência
+* **Concentração de clientes** - quais contas sustentam o faturamento
 
-> **Fonte do dataset:** massa de dados fictícia, gerada com apoio de IA (Claude), desenhada para simular gargalos operacionais reais de uma distribuidora B2B — sazonalidade, vendedor abaixo da meta, cliente inadimplente, produto com devolução acima do normal.
+> **Fonte do dataset:** massa de dados fictícia, gerada com apoio de IA (Claude), desenhada para simular gargalos operacionais reais de uma distribuidora B2B - Sazonalidade, vendedor abaixo da meta, cliente inadimplente, produto com devolução acima do normal.
 
 ---
 ## 🛠️ Ferramentas e Fluxo de Trabalho
@@ -28,11 +28,11 @@ O objetivo foi simular a rotina real de uma empresa B2B e transformar dado bruto
 
 ## 💡 5 Principais Insights de Negócio
 
-1. **Ticket alto sustenta a receita** — Notebooks lidera o faturamento (R$ 1,68 mi) mesmo vendendo poucas unidades (333, contra 2.207 de Periféricos). Produto caro compensa baixo volume.
-2. **Metas descalibradas na equipe** — a maioria bate meta, mas dois vendedores operam bem abaixo (Thiago Martins ~80,6%, Larissa Ribeiro ~85%). Aponta pra carteira de cliente mal dividida ou meta irreal pra região.
-3. **Atrasos apertam o caixa** — só 3,64% dos pagamentos ficam totalmente em aberto, mas 281 das 1.868 vendas (quase 20% do faturado) chegam atrasadas. A política de cobrança de boletos merece revisão.
-4. **Operação de pedidos é eficiente** — taxa de cancelamento pré-faturamento é de apenas 2,03%. Quase tudo que o time vende realmente vira pedido faturado.
-5. **Risco concentrado nos top clientes** — 5 clientes somam R$ 1,87 mi (mais de 1/3 do faturamento total). Perder o Prime Suprimentos sozinho já custaria ~10% de todo o faturamento da empresa.
+1. **Ticket alto sustenta a receita** - Notebooks lidera o faturamento (R$ 1,68 mi) mesmo vendendo poucas unidades (333, contra 2.207 de Periféricos). Produto caro compensa baixo volume.
+2. **Metas descalibradas na equipe** - a maioria bate meta, mas dois vendedores operam bem abaixo (Thiago Martins ~80,6%, Larissa Ribeiro ~85%). Aponta pra carteira de cliente mal dividida ou meta irreal pra região.
+3. **Atrasos apertam o caixa** - só 3,64% dos pagamentos ficam totalmente em aberto, mas 281 das 1.868 vendas (quase 20% do faturado) chegam atrasadas. A política de cobrança de boletos merece revisão.
+4. **Operação de pedidos é eficiente** - taxa de cancelamento pré-faturamento é de apenas 2,03%. Quase tudo que o time vende realmente vira pedido faturado.
+5. **Risco concentrado nos top clientes** - 5 clientes somam R$ 1,87 mi (mais de 1/3 do faturamento total). Perder o Prime Suprimentos sozinho já custaria ~10% de todo o faturamento da empresa.
 
 ---
 
